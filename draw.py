@@ -27,7 +27,10 @@ def main():
     drawPinwheel(450, 10, 2)
     
 def drawPinwheel(in_arcSize, in_totalArc, in_rotateRate):      
-    
+            
+    arcSize = in_arcSize
+    rotateRate = in_rotateRate
+    nextFrameArcs = in_totalArc
     
     runProgram = True
     pauseRotation = False
@@ -35,11 +38,9 @@ def drawPinwheel(in_arcSize, in_totalArc, in_rotateRate):
     rainbowMode = False
     solidMode = False
     drawInstructions = True
+    
     secondaryRotateRate = -3
     drawBgX = 0
-    arcSize = in_arcSize
-    rotateRate = in_rotateRate
-    nextFrameArcs = in_totalArc
     
     instructionsText = ("Number of Spokes:         Up arrow | Down Arrow",
                         "Rotation Speed:           Left Arrow | Right Arrow",
@@ -65,10 +66,10 @@ def drawPinwheel(in_arcSize, in_totalArc, in_rotateRate):
         screen = pygame.display.set_mode(size)
         pygame.display.set_caption("Modular Pinwheel")
         
-        #keypress refresh rate
+        # Keypress refresh rate
         pygame.key.set_repeat(0)        
         
-        #create moving background
+        # Creates the moving background
         backgroundSurf1 = pygame.Surface(pygame.display.get_window_size())
         backgroundSurf1.fill(LIGHT_BLUE)
         bgArray = pygame.PixelArray(backgroundSurf1)
@@ -87,7 +88,7 @@ def drawPinwheel(in_arcSize, in_totalArc, in_rotateRate):
         backgroundSurf2 = pygame.transform.rotate(backgroundSurf2, 180)
 
         
-        #create text instructions 
+        # Creates text instructions 
         instructionsSurf = []
         totalInstructions = instructionsText.__len__()
         for i in range( totalInstructions ):
@@ -95,8 +96,9 @@ def drawPinwheel(in_arcSize, in_totalArc, in_rotateRate):
         textDrawX = size[0] - 508
 
         
-        #create ovals as the pins of the pinwheel
-        #create two copies of the list of ovals.  The first is our template and the second will rotated and then drawn.   
+        # Create ovals to be the pins of the pinwheel
+        # Creates two copies of the list of ovals.  The first is our template 
+        # and the second will be rotated and then drawn.   
         templateSurf = []    
         drawingList = []
         for i in range(totalArcs):
@@ -132,7 +134,7 @@ def drawPinwheel(in_arcSize, in_totalArc, in_rotateRate):
             offsets[i] = (newCenter[0] - originalCenter[0])
 
         
-        #keep track of oval angles with vectors
+        # Keeps track of oval drawing angles with vectors
         pinVects = []
         for i in range(totalArcs):
             pinVects.append(pygame.math.Vector2(0,arcSize/2))
@@ -142,10 +144,10 @@ def drawPinwheel(in_arcSize, in_totalArc, in_rotateRate):
         done = False
         clock = pygame.time.Clock()
         
-        # drawing loop
+        # Drawing loop
         while not done:
             
-            # handle input
+            # Handles user input
             for event in pygame.event.get():
                 
                 if event.type == pygame.QUIT:
@@ -256,7 +258,7 @@ def drawPinwheel(in_arcSize, in_totalArc, in_rotateRate):
                         print("rainbow: " + str(rainbowMode) + "\n")
 
             
-            #calculate new angles and draw ovals                                    
+            # Calculates new angles and draws ovals                                    
             originalCenter = templateSurf[0].get_rect().center                
             
             if(not pauseRotation):      
@@ -279,7 +281,7 @@ def drawPinwheel(in_arcSize, in_totalArc, in_rotateRate):
                     pinVects[i] = pinVects[i].rotate(rotateRate)
 
             
-            #draw background and instructions
+            # Draws background and instructions
             drawBgX = (drawBgX + 1) % size[0]
             screen.blit(backgroundSurf1, (drawBgX,0))
             screen.blit(backgroundSurf2, (drawBgX - size[0],0))
@@ -292,12 +294,12 @@ def drawPinwheel(in_arcSize, in_totalArc, in_rotateRate):
             mousePos = pygame.mouse.get_pos() 
 
             
-            #post all drawing to screen
+            # Posts all drawing to screen
             for i in range(totalArcs):
                 screen.blit(drawingList[i], (mousePos[0]-arcSize/2 + pinVects[i].x - offsets[i], mousePos[1] - arcSize/2 - pinVects[i].y - offsets[i]))
             pygame.display.flip()
             
-            #sets frames per second    
+            # Sets frames per second    
             clock.tick(60)      
   
               
