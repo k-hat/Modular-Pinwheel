@@ -296,7 +296,8 @@ def drawPinwheel(in_arcSize, in_totalArc, in_rotateRate):
             
             # Posts all drawing to screen
             for i in range(totalArcs):
-                screen.blit(drawingList[i], (mousePos[0]-arcSize/2 + pinVects[i].x - offsets[i], mousePos[1] - arcSize/2 - pinVects[i].y - offsets[i]))
+                screen.blit(drawingList[i], (mousePos[0] - arcSize/2 + pinVects[i].x - offsets[i],
+                                             mousePos[1] - arcSize/2 - pinVects[i].y - offsets[i]))
             pygame.display.flip()
             
             # Sets frames per second    

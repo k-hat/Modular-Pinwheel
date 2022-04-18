@@ -19,4 +19,7 @@ Pygame is a package created for coding games.  It's used in this code to
 facilitate drawing to the screen, manage and compute geometry of shapes, and
 handle user input.
 
+This version is intended for Windows and is untested on macOS. It will most
+likely not run correctly.
+
 An exe is provided in the dist folder.
