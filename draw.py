@@ -1,6 +1,5 @@
 import math
 import pygame
-pygame.display.SDL_VIDEODRIVER = 'directx'
 pygame.init()
 PI = math.pi
 VERBOSE = False
@@ -44,14 +43,14 @@ def drawPinwheel(in_arcSize, in_totalArc, in_rotateRate):
     
     instructionsText = ("Number of Spokes:         Up arrow | Down Arrow",
                         "Rotation Speed:           Left Arrow | Right Arrow",
-                        "Secondary Rotation Speed: Numpad Plus | Minus",
+                        "Secondary Rotation Speed: j | k",
                         "Pause:                    Spacebar",
                         "Toggle Colors:            c",
                         "Toggle Pinwheel Mode:     p",
                         "Toggle Solid vs Outline:  s",
                         "Reset to default:         r",
                         "Toggle Help:              h",
-                        "For interesting presets use F1-F8")
+                        "For interesting presets use 1-8")
 
     # Program loop
     while(runProgram):                
@@ -187,62 +186,62 @@ def drawPinwheel(in_arcSize, in_totalArc, in_rotateRate):
                     if event.key == pygame.K_s:
                         solidMode = not solidMode
                         done = True                       
-                    if event.key == pygame.K_KP_PLUS:
+                    if event.key == pygame.K_j:
                         secondaryRotateRate -= .5
-                    if event.key == pygame.K_KP_MINUS:
+                    if event.key == pygame.K_k:
                         secondaryRotateRate += .5                
                     
                     # Preset configurations
-                    if event.key == pygame.K_F1:
+                    if event.key == pygame.K_1:
                         nextFrameArcs = 7
                         rotateRate = -1
                         secondaryRotateRate = -2.5
                         solidMode = False
                         rainbowMode = False                        
                         done = True
-                    if event.key == pygame.K_F2:
+                    if event.key == pygame.K_2:
                         nextFrameArcs = 15
                         rotateRate = .5
                         secondaryRotateRate = -6
                         solidMode = True
                         rainbowMode = True
                         done = True
-                    if event.key == pygame.K_F3:
+                    if event.key == pygame.K_3:
                         nextFrameArcs = 14
                         rotateRate = .5
                         secondaryRotateRate = -6
                         solidMode = False
                         rainbowMode = False
                         done = True
-                    if event.key == pygame.K_F4:
+                    if event.key == pygame.K_4:
                         nextFrameArcs = 2
                         rotateRate = -1
                         secondaryRotateRate = -44.5
                         solidMode = True
                         rainbowMode = True
                         done = True
-                    if event.key == pygame.K_F5:
+                    if event.key == pygame.K_5:
                         nextFrameArcs = 12
                         rotateRate = 2.5
                         secondaryRotateRate = -.5
                         solidMode = True
                         rainbowMode = True
                         done = True   
-                    if event.key == pygame.K_F6:
+                    if event.key == pygame.K_6:
                         nextFrameArcs = 12
                         rotateRate = -2.5
                         secondaryRotateRate = 1
                         solidMode = False
                         rainbowMode = True
                         done = True                                                                        
-                    if event.key == pygame.K_F7:
+                    if event.key == pygame.K_7:
                         nextFrameArcs = 18
                         rotateRate = -.5
                         secondaryRotateRate = -10
                         solidMode = False
                         rainbowMode = False
                         done = True  
-                    if event.key == pygame.K_F8:
+                    if event.key == pygame.K_8:
                         nextFrameArcs = 10
                         rotateRate = -.5
                         secondaryRotateRate = 7.5
