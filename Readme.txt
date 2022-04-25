@@ -23,5 +23,5 @@ This version is intended for Windows and is untested on macOS. It will most
 likely not run correctly.
 
 An exe file is provided in the dist folder.
-This exe works for windows 10, but not for Windows 7.  It should work for 
-Windows 8 and 11, though it is untested.
+This exe works for windows 8 and 10, but not for Windows 7.  It should work for 
+Windows 11, though it is untested.
