@@ -75,7 +75,7 @@ def drawPinwheel(in_arcSize, in_totalArc, in_rotateRate):
                 
         for i in range(size[0]):
             
-            if 720 <= i:
+            if i >= 720:
                 bgArray[i] = (150+2*(i/14.4%50), 205+(i/14.4%50), 255)
             else:
                 bgArray[i] = (255-2*(i/14.4%50), 255-(i/14.4%50), 255)
